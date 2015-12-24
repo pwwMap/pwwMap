@@ -1,0 +1,7 @@
+1¡¢"Diskfind" DLL memory internal allocation and external release
+
+2¡¢Attribute configuration:
+
+if dll, runtime library set DLL multithreaded
+
+If it is to generate a static library set multi thread.

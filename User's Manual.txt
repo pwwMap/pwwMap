@@ -1,0 +1,64 @@
+
+1, File description:
+
+pwwHash2008.sln			32 bit vc2008
+pwwHash2012.sln			64 bit vc2012	
+pwwhashforlinux\Makefile	For Linux 64		
+
+libPwwHashMap.so 		For Linux 64
+pwwHashMapDLL64.dll 		For Windows 64
+pwwHashMapDLL.dll		For Windows 32
+
+
+
+
+
+2, Development Manual:
+
+a, Three different map algorithm, used in different application scenarios.
+	a1,	memMap  Based on memory No hard disk consumption.
+	a2,	diskMap Based on the hard disk No memory consumption.
+	a3,	hashMap No delete function, but the best performance.
+	memMap and diskMap can turn to hashMap by memMap2HashMap and diskMap2HashMap.
+
+b, In addition,Provide Google HashMap for comparative test. 
+Algorithm of Google,the performance is not good, but also has the collision probability .
+
+c, example
+	#define VALUEPOS 6
+	#define VALUELENPOS 4
+	bool mapPrtKV(unsigned char*& ucKey, int klen,unsigned char*& ucValue)//the loop of the table data
+	{
+	g_count++;
+	std::cout<<std::string((char*)ucKey,klen) <<"		" << *(int*)&ucValue[VALUEPOS]<<std::endl;
+	return false;
+	}
+	bool mapHashKV(unsigned char*& ucValue,int pos=0)//heap loop value
+	{
+	g_count++;
+	std::cout<< std::string(&((char*)ucValue)[VALUEPOS],*(unsigned short*)&ucValue[VALUELENPOS])<<" ";
+	return false;
+	}
+main:
+	CPwwDiskMap::pwwDiskMapIni("./pwwDiskMapTest","./pwwDiskMapTest");
+
+	PwwStrMap<string, int> myMap;
+	myMap.setDiskSign(g_sign++);//The same symbols will insert error
+	... Various map operation ...
+	myMap.diskMapInsert(szCode,count);
+	...
+	... loop  need to pass a function pointer ...
+	myMap.diskMapForEach(mapPrtKV);
+
+
+	CPwwDiskMap::pwwDiskMapRelease();
+
+c1, Result output In the form of data flow,  values is located at the VALUEPOS position of the flow, and the length of value is u_short, is located in the VALUELENPOS position .
+
+c2, The default data file path of diskmap is the home path of this program, but you can specify any other paths if you need. you can use CPwwDiskMap:: pwwDiskMapIni (), remember to release CPwwDiskMap:: pwwDiskMapRelease ()
+
+c3, we must ensure that being initialized by setDiskSign(a unique sign) before you use diskmap
+
+c4, The hash uses two kinds of memory management to build table, one is the bulk memory management method, pre analysis of memory size, allocate large heap space by once. another way is to allocates little memory by many times. the memmap uses the first aproach.  Because the speed of lseek on hard disk is much slower than memory malloc, so diskmap is used second.
+
+So memmap can have two kinds of loop methods, hashMapForEach1 and hashMapForEach2. one is the loop of the table data, one is loop value in the heap directly.

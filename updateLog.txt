@@ -1,0 +1,3 @@
+2015-11-8
+1, modefy short key index bug
+2, Enhanced diskMap performance and the highest record can reach 1000000000
