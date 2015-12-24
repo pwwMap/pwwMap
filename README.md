@@ -1,16 +1,8 @@
-Title:       The core of the big data solutions -- Map.
-Author:      pengwenwei
-address:     No.17-18 of XiangGangbatang Community, Xiangtan City of Hunan Province, China.   
-Language:    c++
-Platform:    Windows, linux
-Technology:  Perfect hash algorithm
-Level:       Advanced
-Description: A high performance map algorithm
-Section      MFC c++ map stl
-SubSection   c++ algorithm
-License:     (GPLv3)
+# pwwMap
 
+The core of the big data solutions -- Map.
 
+## Description
 Map is widely used in c++ programs. Its performance is critical to programs' performance. Especially in big data  and the scenarios which can't realize data distribution and parallel processing.
 
 I have been working on big data analysis for many years in telecommunition and information security industry. The data analysis is so complicated that they can't work without map. Especially in information security industry, the data is much more complicated than others. For example, ip table, mac table, telephone numbers table, dns table etc.
@@ -39,3 +31,51 @@ My email is pww71@sina.com and password is 8622507. after delivery. Please make 
 
 My address is as follows:
 No.17-18 of XiangGangbatang Community, Xiangtan City of Hunan Province, China.
+
+## Information
+
+- Author
+
+   - pengwenwei
+
+- address
+
+  - No.17-18 of XiangGangbatang Community, Xiangtan City of Hunan Province, China.   
+
+- Language
+  - C++
+
+- Platform
+
+  - Windows, Linux
+
+- Technology
+
+  - Perfect hash algorithm
+
+- Level
+
+  - Advanced
+
+- Description
+
+  - A high performance map algorithm
+
+- License
+
+  - GPLv3
+
+- Section
+  - MFC
+
+  - C++
+
+  - map
+
+  - stl
+
+- SubSection
+
+  - C++
+
+  - algorithm
